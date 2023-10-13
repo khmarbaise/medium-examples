@@ -176,8 +176,8 @@ public class App {
     System.out.println("--- 10. Count of all projects with " + projectManager + " as PM. ---");
 
     var numberOfProjectsOfPM = employeeList.stream()
-        .flatMap(e -> e.getProjects().stream())
-        .filter(ee -> projectManager.equalsIgnoreCase(ee.getProjectManager()))
+        .flatMap(employee -> employee.getProjects().stream())
+        .filter(project -> projectManager.equalsIgnoreCase(project.getProjectManager()))
         .distinct()
         .count();
 
@@ -190,8 +190,8 @@ public class App {
     System.out.println("--- 11. List of all projects with " + projectManager + " as PM. ---");
 
     employeeList.stream()
-        .flatMap(e -> e.getProjects().stream())
-        .filter(p -> projectManager.equalsIgnoreCase(p.getProjectManager()))
+        .flatMap(employee -> employee.getProjects().stream())
+        .filter(project -> projectManager.equalsIgnoreCase(project.getProjectManager()))
         .distinct()
         .forEach(p -> System.out.println(convertToString(p)));
   }
@@ -201,7 +201,7 @@ public class App {
     System.out.println("--- 12. List of all people working with " + projectManager + " ---");
 
     var allPeopleWorkingWith = employeeList.stream()
-        .filter(e -> e.getProjects().stream().anyMatch(p -> projectManager.equalsIgnoreCase(p.getProjectManager())))
+        .filter(employee -> employee.getProjects().stream().anyMatch(project -> projectManager.equalsIgnoreCase(project.getProjectManager())))
         .collect(Collectors.toList());
 
     allPeopleWorkingWith.forEach(e -> System.out.println(convertToString(e)));
@@ -230,7 +230,7 @@ public class App {
   private static void createMapOfCountJoinedParticularYear(List<Employee> employeeList) {
     System.out.println("--- 14. Create a map based on this data, the key should be year of joining and value should be the count ---");
     var createData = employeeList.stream()
-        .collect(Collectors.groupingBy(s -> s.getId().substring(0, 4), Collectors.counting()));
+        .collect(Collectors.groupingBy(employee -> employee.getId().substring(0, 4), Collectors.counting()));
 
     createData.entrySet().stream()
         .sorted(Map.Entry.comparingByKey())
