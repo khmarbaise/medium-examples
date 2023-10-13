@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 
 import static java.util.Map.Entry.comparingByKey;
 
+/**
+ * This is related to the questions:
+ * <a href="https://medium.com/@bhaskarsharan/practice-java-streams-questions-8a76cbfee1be">https://medium.com/@bhaskarsharan/practice-java-streams-questions-8a76cbfee1be</a>
+ */
 public class App {
 
   static List<Employee> employeeList = new ArrayList<>();
