@@ -125,10 +125,10 @@ public class App {
   private static void printListOfAllEmployeeWithMinSalary(List<Employee> employeeList) {
     System.out.println("--- 7. Print list of all employee with min salary. ---");
 
-    var collect = employeeList.stream()
+    var groupedBySalary = employeeList.stream()
         .collect(Collectors.groupingBy(Employee::getSalary));
 
-    collect.entrySet().stream()
+    groupedBySalary.entrySet().stream()
         .sorted(comparingByKey())
         .limit(1)
         .flatMap(s -> s.getValue().stream())
