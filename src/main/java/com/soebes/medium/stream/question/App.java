@@ -62,8 +62,6 @@ public class App {
     // Create a map based on this data, the key should be year of joining and value should be the count
     // of people joined in that particular year. (Hint : Collectors.groupingBy())
     createMapOfCountJoinedParticularYear(employeeList);
-    // TODO
-    // QnA
   }
 
   private static void listAllDistinctProjectInNonAscendingOrder(List<Employee> employeeList) {
